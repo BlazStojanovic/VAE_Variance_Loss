@@ -1,0 +1,168 @@
+%%
+%% Copyright 2007, 2008, 2009 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% This template has been modified by Philip Blakely for
+%% local distribution to students on the MPhil for Scientific
+%% Computing course run at the University of Cambridge.
+%%
+
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%% SP 2008/03/01
+%%
+%%
+%%
+%% $Id: elsarticle-template-num.tex 4 2009-10-24 08:22:58Z rishi $
+
+\documentclass[final,3p,times,twocolumn]{elsarticle}
+\usepackage{pdfpages}
+\usepackage{booktabs} % Tables
+\usepackage{pifont}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% if you use PostScript figures in your article
+%% use the graphics package for simple commands
+%% \usepackage{graphics}
+%% or use the graphicx package for more complicated commands
+%% \usepackage{graphicx}
+%% or use the epsfig package if you prefer to use the old commands
+%% \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{graphicx}
+
+%% Font setting, for my own eyes
+\usepackage{libertine}
+\usepackage{libertinust1math}
+\usepackage[T1]{fontenc}
+
+%% Algorithms
+\usepackage[ruled,vlined]{algorithm2e}
+
+%% Some math characters
+\usepackage{bbold}
+
+%% So that references are listed in the Contents
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+%% \usepackage{lineno}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+
+
+\journal{MPhil in Scientific Computing}
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+\title{Variational Autoencoders with variance loss}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{<author name>}
+%% \address[label1]{<address>}
+%% \address[label2]{<address>}
+
+\author{Bla\v z Stojanovi\v c}
+
+\address{Cavendish Laboratory, Department of Physics, J J Thomson
+  Avenue, Cambridge. CB3 0HE}
+
+\begin{abstract}
+
+\end{abstract}
+
+\end{frontmatter}
+
+%%
+%% Start line numbering here if you want
+%%
+% \linenumbers
+
+%% main text
+\section{Introduction}
+\subsection{Generative modeling}
+\subsection{Deep Latent Variable Models (DLVMs)}
+\subsection{Variational Autoencoders}
+\subsubsection{The reparametrization trick}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{WA1-references.bib}
+
+\end{document}
+
+%%
+%% End of file `elsarticle-template-num.tex'.
