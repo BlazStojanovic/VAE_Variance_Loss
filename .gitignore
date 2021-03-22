@@ -1,0 +1,10 @@
+/data
+
+*.aux
+*.bbl
+*.blg
+*.log
+*.spl
+*.synctex.gz
+
+

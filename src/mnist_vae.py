@@ -18,7 +18,6 @@ This file uses the stax network definition library and the optimizers
 optimization library.
 """
 
-
 import os
 import time
 
@@ -30,21 +29,24 @@ from jax import jit, grad, lax, random
 from jax.experimental import optimizers
 from jax.experimental import stax
 from jax.experimental.stax import Dense, FanOut, Relu, Softplus
-from examples import datasets
+import datasets
 
-
+@jit
 def gaussian_kl(mu, sigmasq):
   """KL divergence from a diagonal Gaussian to the standard Gaussian."""
   return -0.5 * jnp.sum(1. + jnp.log(sigmasq) - mu**2. - sigmasq)
 
+@jit
 def gaussian_sample(rng, mu, sigmasq):
   """Sample a diagonal Gaussian."""
   return mu + jnp.sqrt(sigmasq) * random.normal(rng, mu.shape)
 
+@jit
 def bernoulli_logpdf(logits, x):
   """Bernoulli log pdf of data x given logits."""
   return -jnp.sum(jnp.logaddexp(0., jnp.where(x, -1., 1.) * logits))
 
+@jit
 def elbo(rng, params, images):
   """Monte Carlo estimate of the negative evidence lower bound."""
   enc_params, dec_params = params
@@ -85,10 +87,10 @@ if __name__ == "__main__":
   step_size = 0.001
   num_epochs = 100
   batch_size = 32
-  nrow, ncol = 10, 10  # sampled image grid size
+  nrow, ncol = 20, 20  # sampled image grid size
 
   test_rng = random.PRNGKey(1)  # fixed prng key for evaluation
-  imfile = os.path.join(os.getenv("TMPDIR", "/tmp/"), "mnist_vae_{:03d}.png")
+  imfile = os.path.join("../plots/mnist_vae_{:03d}.png")
 
   train_images, _, test_images, _ = datasets.mnist(permute_train=True)
   num_complete_batches, leftover = divmod(train_images.shape[0], batch_size)
