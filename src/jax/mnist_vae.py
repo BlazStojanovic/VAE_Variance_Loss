@@ -82,7 +82,6 @@ decoder_init, decode = stax.serial(
     Dense(28 * 28),
 )
 
-
 if __name__ == "__main__":
   step_size = 0.001
   num_epochs = 100
