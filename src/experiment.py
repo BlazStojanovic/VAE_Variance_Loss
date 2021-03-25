@@ -8,7 +8,7 @@ import pytorch_lightning as pl
 from torchvision import transforms
 import torchvision.utils as vutils
 from torchvision.datasets import CelebA
-from torchvision.datasets import mnist
+from torchvision.datasets import MNIST
 from torch.utils.data import DataLoader
 
 
@@ -143,8 +143,8 @@ class VAEXperiment(pl.LightningModule):
                              transform=transform,
                              download=True)
         elif self.params['dataset'] == 'mnist':
-            dataset = mnist(root = self.params['data_path'],
-                             split = "train",
+            dataset = MNIST(root = self.params['data_path'],
+                             train  = True,
                              transform=transform,
                              download=True)
         else:
@@ -170,8 +170,8 @@ class VAEXperiment(pl.LightningModule):
                                                  drop_last=True)
             self.num_val_imgs = len(self.sample_dataloader)
         elif self.params['dataset'] == 'mnist':
-            self.sample_dataloader =  DataLoader(mnist(root = self.params['data_path'],
-                                                        split = "test",
+            self.sample_dataloader =  DataLoader(MNIST(root = self.params['data_path'],
+                                                        train = False,
                                                         transform=transform,
                                                         download=False),
                                                  batch_size= 144,
