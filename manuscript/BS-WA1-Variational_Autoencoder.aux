@@ -1,11 +1,135 @@
 \relax 
-\bibstyle{elsarticle-num}
-\bibdata{WA1-references.bib}
+\citation{kingma2017variational}
+\citation{kingma2013auto,rezende2014stochastic}
+\citation{goodfellow2016nips}
+\citation{rezende2015variational}
+\citation{everitt2014finite}
+\citation{rabiner1986introduction}
+\citation{blei2003latent}
+\citation{ackley1985learning,dayan1995helmholtz}
+\citation{oord2016wavenet}
+\citation{ledig2017photo}
+\citation{kingma2014semi}
+\citation{goodfellow2016nips}
+\citation{goodfellow2016deep}
 \providecommand \oddpage@label [2]{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Generative modeling}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Deep Latent Variable Models (DLVMs)}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Variational Autoencoders}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.3.1}The reparametrization trick}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{Bibliography}{1}{}\protected@file@percent }
-\gdef \@abspage@last{1}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Generative modelling}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Deep latent variable models}{1}{}\protected@file@percent }
+\newlabel{sec:DLVM}{{1.2}{1}}
+\citation{kingma2017variational}
+\citation{dempster1977maximum}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.1}Learning in DLVMs}{2}{}\protected@file@percent }
+\citation{hoffman2010online}
+\citation{hinton1995wake}
+\citation{kingma2013auto,rezende2014stochastic}
+\citation{kingma2013auto}
+\citation{chriss1997black,schrittwieser2020mastering}
+\citation{mohamed2020monte}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Variational Autoencoders}{3}{}\protected@file@percent }
+\newlabel{sec:ELBO}{{1.3}{3}}
+\newlabel{eq:logpELBO}{{10}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces ELBO is a lower bound of the log likelihood, the difference between the two is the KL divergence. The better the approximation of the posterior $q_{\boldsymbol  {\phi }}(\mathbf  {z}|\mathbf  {x})$, the smaller is KL and consequently the closer is ELBO to $\qopname  \relax o{log}p_{\boldsymbol  {\theta }}(\mathbf  {x})$.\relax }}{3}{}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:elbodiagram}{{1}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.3.1}Gradient estimation}{3}{}\protected@file@percent }
+\newlabel{subsec:gradest}{{1.3.1}{3}}
+\citation{kingma2017variational}
+\citation{kingma2017variational}
+\citation{kingma2013auto}
+\citation{kingma2013auto}
+\citation{bowman2015generating}
+\citation{bowman2015generating}
+\citation{kingma2016improving}
+\citation{higgins2016beta}
+\citation{burgess2018understanding}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The reparametrization trick, adapted from\nobreakspace  {}\cite  {kingma2017variational}. The stochasticity of the $\mathbf  {z}$ node is pushed out into a separate input to the same node, resulting in deterministic gradients w.r.t $\boldsymbol  {\phi }$ through the node.\relax }}{4}{}\protected@file@percent }
+\newlabel{fig:reparam}{{2}{4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Original}}}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Reparametrized}}}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  The variational autoencoder. \relax }}{4}{}\protected@file@percent }
+\newlabel{fig:vae_basic}{{3}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.3.2}Variants and advances}{4}{}\protected@file@percent }
+\citation{dieng2016variational}
+\citation{kingma2016improving,rezende2015variational}
+\citation{gregor2015draw}
+\citation{semeniuta2017hybrid}
+\citation{jin2018junction}
+\citation{habibian2019video}
+\citation{kingma2014semi}
+\citation{maaloe2019biva}
+\citation{vahdat2020nvae}
+\citation{child2020very}
+\citation{maddison2016discrelax}
+\citation{rolfe2016discrete}
+\citation{DBLP:journals/corr/abs-1711-00937}
+\citation{nalisnick2018deep}
+\citation{dieng2016variational}
+\citation{he2019lagging}
+\citation{rezende2018taming}
+\citation{richter2020vargrad}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Implementation of Variance loss}{5}{}\protected@file@percent }
+\citation{richter2020vargrad}
+\citation{kingma2013auto}
+\newlabel{eq:varloss}{{19}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Continuous latent space}{6}{}\protected@file@percent }
+\newlabel{subsec:continuous}{{2.1}{6}}
+\newlabel{alg:vargradEst}{{1}{6}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Gradients of $\mathcal  {L}_{\boldsymbol  {\boldsymbol  {\phi }}, \boldsymbol  {\theta }}(\mathbf  {x})$\relax }}{6}{}\protected@file@percent }
+\newlabel{eq:gaussian}{{22}{6}}
+\newlabel{eq:bernoulli}{{25}{6}}
+\bibstyle{elsarticle-num}
+\bibdata{WA1-references.bib}
+\bibcite{kingma2017variational}{{1}{}{{}}{{}}}
+\bibcite{kingma2013auto}{{2}{}{{}}{{}}}
+\bibcite{rezende2014stochastic}{{3}{}{{}}{{}}}
+\bibcite{goodfellow2016nips}{{4}{}{{}}{{}}}
+\bibcite{rezende2015variational}{{5}{}{{}}{{}}}
+\bibcite{everitt2014finite}{{6}{}{{}}{{}}}
+\bibcite{rabiner1986introduction}{{7}{}{{}}{{}}}
+\bibcite{blei2003latent}{{8}{}{{}}{{}}}
+\bibcite{ackley1985learning}{{9}{}{{}}{{}}}
+\bibcite{dayan1995helmholtz}{{10}{}{{}}{{}}}
+\bibcite{oord2016wavenet}{{11}{}{{}}{{}}}
+\bibcite{ledig2017photo}{{12}{}{{}}{{}}}
+\bibcite{kingma2014semi}{{13}{}{{}}{{}}}
+\bibcite{goodfellow2016deep}{{14}{}{{}}{{}}}
+\bibcite{dempster1977maximum}{{15}{}{{}}{{}}}
+\bibcite{hoffman2010online}{{16}{}{{}}{{}}}
+\bibcite{hinton1995wake}{{17}{}{{}}{{}}}
+\bibcite{chriss1997black}{{18}{}{{}}{{}}}
+\bibcite{schrittwieser2020mastering}{{19}{}{{}}{{}}}
+\bibcite{mohamed2020monte}{{20}{}{{}}{{}}}
+\bibcite{bowman2015generating}{{21}{}{{}}{{}}}
+\bibcite{kingma2016improving}{{22}{}{{}}{{}}}
+\bibcite{higgins2016beta}{{23}{}{{}}{{}}}
+\bibcite{burgess2018understanding}{{24}{}{{}}{{}}}
+\bibcite{dieng2016variational}{{25}{}{{}}{{}}}
+\bibcite{gregor2015draw}{{26}{}{{}}{{}}}
+\bibcite{semeniuta2017hybrid}{{27}{}{{}}{{}}}
+\bibcite{jin2018junction}{{28}{}{{}}{{}}}
+\bibcite{habibian2019video}{{29}{}{{}}{{}}}
+\bibcite{maaloe2019biva}{{30}{}{{}}{{}}}
+\bibcite{vahdat2020nvae}{{31}{}{{}}{{}}}
+\bibcite{child2020very}{{32}{}{{}}{{}}}
+\bibcite{maddison2016discrelax}{{33}{}{{}}{{}}}
+\bibcite{rolfe2016discrete}{{34}{}{{}}{{}}}
+\bibcite{DBLP:journals/corr/abs-1711-00937}{{35}{}{{}}{{}}}
+\bibcite{nalisnick2018deep}{{36}{}{{}}{{}}}
+\bibcite{he2019lagging}{{37}{}{{}}{{}}}
+\bibcite{rezende2018taming}{{38}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Discrete latent space}{7}{}\protected@file@percent }
+\newlabel{subsec:discrete}{{2.2}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Experiments}{7}{}\protected@file@percent }
+\newlabel{sec:results}{{3}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Continuous latent space}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Fashion MNIST}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}CELEBa}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Discrete latent space}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Binarized MNIST}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Binarized Omniglot}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{Bibliography}{7}{}\protected@file@percent }
+\bibcite{richter2020vargrad}{{39}{}{{}}{{}}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\gdef \@abspage@last{8}

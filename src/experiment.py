@@ -8,8 +8,11 @@ import pytorch_lightning as pl
 from torchvision import transforms
 import torchvision.utils as vutils
 from torchvision.datasets import CelebA
-from torchvision.datasets import mnist
+from torchvision.datasets import MNIST
+from torchvision.datasets import FashionMNIST
+from torchvision.datasets import Omniglot
 from torch.utils.data import DataLoader
+
 
 
 class VAEXperiment(pl.LightningModule):
@@ -68,6 +71,8 @@ class VAEXperiment(pl.LightningModule):
         test_input, test_label = next(iter(self.sample_dataloader))
         test_input = test_input.to(self.curr_device)
         test_label = test_label.to(self.curr_device)
+        # test_input = test_input.cuda()
+        # test_label = test_label.cuda()
         recons = self.model.generate(test_input, labels = test_label)
         vutils.save_image(recons.data,
                           f"{self.logger.save_dir}{self.logger.name}/version_{self.logger.version}/"
@@ -143,8 +148,18 @@ class VAEXperiment(pl.LightningModule):
                              transform=transform,
                              download=True)
         elif self.params['dataset'] == 'mnist':
-            dataset = mnist(root = self.params['data_path'],
-                             split = "train",
+            dataset = MNIST(root = self.params['data_path'],
+                             train = True,
+                             transform=transform,
+                             download=True)
+        elif self.params['dataset'] == 'fashionmnist':
+            dataset = FashionMNIST(root = self.params['data_path'],
+                             train = True,
+                             transform=transform,
+                             download=True)
+        elif self.params['dataset'] == 'omniglot':
+            dataset = Omniglot(root = self.params['data_path'],
+                             train = True,
                              transform=transform,
                              download=True)
         else:
@@ -162,7 +177,7 @@ class VAEXperiment(pl.LightningModule):
 
         if self.params['dataset'] == 'celeba':
             self.sample_dataloader =  DataLoader(CelebA(root = self.params['data_path'],
-                                                        split = "test",
+                                                        train = "test",
                                                         transform=transform,
                                                         download=True),
                                                  batch_size= 144,
@@ -170,8 +185,26 @@ class VAEXperiment(pl.LightningModule):
                                                  drop_last=True)
             self.num_val_imgs = len(self.sample_dataloader)
         elif self.params['dataset'] == 'mnist':
-            self.sample_dataloader =  DataLoader(mnist(root = self.params['data_path'],
-                                                        split = "test",
+            self.sample_dataloader =  DataLoader(MNIST(root = self.params['data_path'],
+                                                        train = False,
+                                                        transform=transform,
+                                                        download=False),
+                                                 batch_size= 144,
+                                                 shuffle = True,
+                                                 drop_last=True)
+            self.num_val_imgs = len(self.sample_dataloader)
+        elif self.params['dataset'] == 'fashionmnist':
+            self.sample_dataloader =  DataLoader(FashionMNIST(root = self.params['data_path'],
+                                                        train = False,
+                                                        transform=transform,
+                                                        download=False),
+                                                 batch_size= 144,
+                                                 shuffle = True,
+                                                 drop_last=True)
+            self.num_val_imgs = len(self.sample_dataloader)
+        elif self.params['dataset'] == 'omniglot':
+            self.sample_dataloader =  DataLoader(Omniglot(root = self.params['data_path'],
+                                                        train = False,
                                                         transform=transform,
                                                         download=False),
                                                  batch_size= 144,
@@ -183,7 +216,7 @@ class VAEXperiment(pl.LightningModule):
 
         return self.sample_dataloader
 
-    def data_transforms(self):
+    def data_transforms(self): # TODO fixup
 
         SetRange = transforms.Lambda(lambda X: 2 * X - 1.)
         SetScale = transforms.Lambda(lambda X: X/X.sum(0).expand_as(X))
@@ -195,9 +228,15 @@ class VAEXperiment(pl.LightningModule):
                                             transforms.ToTensor(),
                                             SetRange])
         elif self.params['dataset'] == 'mnist': 
-            transform = transforms.Compose([transforms.RandomHorizontalFlip(),
-                                            transforms.CenterCrop(148),
-                                            transforms.Resize(self.params['img_size']),
+            transform = transforms.Compose([transforms.Resize(self.params['img_size']),
+                                            transforms.ToTensor(),
+                                            SetRange])
+        elif self.params['dataset'] == 'fashionmnist': 
+            transform = transforms.Compose([transforms.Resize(self.params['img_size']),
+                                            transforms.ToTensor(),
+                                            SetRange])
+        elif self.params['dataset'] == 'omniglot': 
+            transform = transforms.Compose([transforms.Resize(self.params['img_size']),
                                             transforms.ToTensor(),
                                             SetRange])
         else:

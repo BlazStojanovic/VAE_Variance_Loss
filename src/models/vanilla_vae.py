@@ -7,7 +7,6 @@ from .types_ import *
 
 class VanillaVAE(BaseVAE):
 
-
     def __init__(self,
                  in_channels: int,
                  latent_dim: int,
@@ -16,63 +15,21 @@ class VanillaVAE(BaseVAE):
         super(VanillaVAE, self).__init__()
 
         self.latent_dim = latent_dim
-
-        modules = []
-        if hidden_dims is None:
-            hidden_dims = [32, 64, 128, 256, 512]
-
-        # Build Encoder
-        for h_dim in hidden_dims:
-            modules.append(
-                nn.Sequential(
-                    nn.Conv2d(in_channels, out_channels=h_dim,
-                              kernel_size= 3, stride= 2, padding  = 1),
-                    nn.BatchNorm2d(h_dim),
-                    nn.LeakyReLU())
-            )
-            in_channels = h_dim
-
-        self.encoder = nn.Sequential(*modules)
-        self.fc_mu = nn.Linear(hidden_dims[-1]*4, latent_dim)
-        self.fc_var = nn.Linear(hidden_dims[-1]*4, latent_dim)
+        hidden_dims = 500
+        self.imsize = 28
 
 
-        # Build Decoder
-        modules = []
+        self.encoder = nn.Sequential(nn.Linear(self.imsize**2, hidden_dims), 
+                                     nn.ReLU())
+        self.fc_mu = nn.Linear(hidden_dims, latent_dim)
+        self.fc_var = nn.Linear(hidden_dims, latent_dim)
+        
+        # # Build Decoder
+        self.decoder_input = nn.Sequential(nn.Linear(latent_dim,hidden_dims), 
+                                           nn.ReLU())
+        self.decoder = nn.Sequential(nn.Linear(hidden_dims,self.imsize**2))
+        self.final_layer = nn.Sequential(nn.Sigmoid())
 
-        self.decoder_input = nn.Linear(latent_dim, hidden_dims[-1] * 4)
-
-        hidden_dims.reverse()
-
-        for i in range(len(hidden_dims) - 1):
-            modules.append(
-                nn.Sequential(
-                    nn.ConvTranspose2d(hidden_dims[i],
-                                       hidden_dims[i + 1],
-                                       kernel_size=3,
-                                       stride = 2,
-                                       padding=1,
-                                       output_padding=1),
-                    nn.BatchNorm2d(hidden_dims[i + 1]),
-                    nn.LeakyReLU())
-            )
-
-
-
-        self.decoder = nn.Sequential(*modules)
-
-        self.final_layer = nn.Sequential(
-                            nn.ConvTranspose2d(hidden_dims[-1],
-                                               hidden_dims[-1],
-                                               kernel_size=3,
-                                               stride=2,
-                                               padding=1,
-                                               output_padding=1),
-                            nn.BatchNorm2d(hidden_dims[-1]),
-                            nn.LeakyReLU(),
-                            nn.Conv2d(hidden_dims[-1], out_channels= 3,
-                                      kernel_size= 3, padding= 1),
-                            nn.Tanh())
 
     def encode(self, input: Tensor) -> List[Tensor]:
         """
@@ -81,11 +38,11 @@ class VanillaVAE(BaseVAE):
         :param input: (Tensor) Input tensor to encoder [N x C x H x W]
         :return: (Tensor) List of latent codes
         """
-        result = self.encoder(input)
-        result = torch.flatten(result, start_dim=1)
+        result = self.encoder(input.view(-1,self.imsize**2))
+        # result = torch.flatten(result, start_dim=1)
 
         # Split the result into mu and var components
-        # of the latent Gaussian distribution
+        # of the latent Gaussian se
         mu = self.fc_mu(result)
         log_var = self.fc_var(result)
 
@@ -99,10 +56,10 @@ class VanillaVAE(BaseVAE):
         :return: (Tensor) [B x C x H x W]
         """
         result = self.decoder_input(z)
-        result = result.view(-1, 512, 2, 2)
+        # result = result.view(-1, 128, 2, 2)
         result = self.decoder(result)
         result = self.final_layer(result)
-        return result
+        return result.view(-1, 1, self.imsize, self.imsize)
 
     def reparameterize(self, mu: Tensor, logvar: Tensor) -> Tensor:
         """
@@ -137,12 +94,12 @@ class VanillaVAE(BaseVAE):
         log_var = args[3]
 
         kld_weight = kwargs['M_N'] # Account for the minibatch samples from the dataset
-        recons_loss =F.mse_loss(recons, input)
+        recons_loss =F.binary_cross_entropy(recons, input, reduction='sum')
 
+        # kld_loss = torch.mean(-0.5 * torch.sum(1 + log_var - mu ** 2 - log_var.exp(), dim = 1), dim = 0)
+        kld_loss = -0.5 * torch.sum(1 + log_var - mu ** 2 - log_var.exp())
 
-        kld_loss = torch.mean(-0.5 * torch.sum(1 + log_var - mu ** 2 - log_var.exp(), dim = 1), dim = 0)
-
-        loss = recons_loss + kld_weight * kld_loss
+        loss = recons_loss +  kld_loss #* kld_weight
         return {'loss': loss, 'Reconstruction_Loss':recons_loss, 'KLD':-kld_loss}
 
     def sample(self,

@@ -23,7 +23,6 @@ with open(args.filename, 'r') as file:
     except yaml.YAMLError as exc:
         print(exc)
 
-
 tt_logger = TestTubeLogger(
     save_dir=config['logging_params']['save_dir'],
     name=config['logging_params']['name'],

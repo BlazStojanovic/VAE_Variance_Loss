@@ -1,8 +1,185 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{10}
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
 \expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{kingma2017variational}
+D.~P. Kingma, Variational inference \& deep learning: A new synthesis (2017).
+
+\bibitem{kingma2013auto}
+D.~P. Kingma, M.~Welling, Auto-encoding variational bayes, arXiv preprint
+  arXiv:1312.6114 (2013).
+
+\bibitem{rezende2014stochastic}
+D.~J. Rezende, S.~Mohamed, D.~Wierstra, Stochastic backpropagation and
+  approximate inference in deep generative models, in: International conference
+  on machine learning, PMLR, 2014, pp. 1278--1286.
+
+\bibitem{goodfellow2016nips}
+I.~Goodfellow, Nips 2016 tutorial: Generative adversarial networks, arXiv
+  preprint arXiv:1701.00160 (2016).
+
+\bibitem{rezende2015variational}
+D.~Rezende, S.~Mohamed, Variational inference with normalizing flows, in:
+  International Conference on Machine Learning, PMLR, 2015, pp. 1530--1538.
+
+\bibitem{everitt2014finite}
+B.~S. Everitt, Finite mixture distributions, Wiley StatsRef: Statistics
+  Reference Online (2014).
+
+\bibitem{rabiner1986introduction}
+L.~Rabiner, B.~Juang, An introduction to hidden markov models, ieee assp
+  magazine 3~(1) (1986) 4--16.
+
+\bibitem{blei2003latent}
+D.~M. Blei, A.~Y. Ng, M.~I. Jordan, Latent dirichlet allocation, the Journal of
+  machine Learning research 3 (2003) 993--1022.
+
+\bibitem{ackley1985learning}
+D.~H. Ackley, G.~E. Hinton, T.~J. Sejnowski, A learning algorithm for boltzmann
+  machines, Cognitive science 9~(1) (1985) 147--169.
+
+\bibitem{dayan1995helmholtz}
+P.~Dayan, G.~E. Hinton, R.~M. Neal, R.~S. Zemel, The helmholtz machine, Neural
+  computation 7~(5) (1995) 889--904.
+
+\bibitem{oord2016wavenet}
+A.~v.~d. Oord, S.~Dieleman, H.~Zen, K.~Simonyan, O.~Vinyals, A.~Graves,
+  N.~Kalchbrenner, A.~Senior, K.~Kavukcuoglu, Wavenet: A generative model for
+  raw audio, arXiv preprint arXiv:1609.03499 (2016).
+
+\bibitem{ledig2017photo}
+C.~Ledig, L.~Theis, F.~Husz{\'a}r, J.~Caballero, A.~Cunningham, A.~Acosta,
+  A.~Aitken, A.~Tejani, J.~Totz, Z.~Wang, et~al., Photo-realistic single image
+  super-resolution using a generative adversarial network, in: Proceedings of
+  the IEEE conference on computer vision and pattern recognition, 2017, pp.
+  4681--4690.
+
+\bibitem{kingma2014semi}
+D.~P. Kingma, D.~J. Rezende, S.~Mohamed, M.~Welling, Semi-supervised learning
+  with deep generative models, arXiv preprint arXiv:1406.5298 (2014).
+
+\bibitem{goodfellow2016deep}
+I.~Goodfellow, Y.~Bengio, A.~Courville, Y.~Bengio, Deep learning, Vol.~1, MIT
+  press Cambridge, 2016.
+
+\bibitem{dempster1977maximum}
+A.~P. Dempster, N.~M. Laird, D.~B. Rubin, Maximum likelihood from incomplete
+  data via the em algorithm, Journal of the Royal Statistical Society: Series B
+  (Methodological) 39~(1) (1977) 1--22.
+
+\bibitem{hoffman2010online}
+M.~Hoffman, F.~R. Bach, D.~M. Blei, Online learning for latent dirichlet
+  allocation, in: advances in neural information processing systems, Citeseer,
+  2010, pp. 856--864.
+
+\bibitem{hinton1995wake}
+G.~E. Hinton, P.~Dayan, B.~J. Frey, R.~M. Neal, The" wake-sleep" algorithm for
+  unsupervised neural networks, Science 268~(5214) (1995) 1158--1161.
+
+\bibitem{chriss1997black}
+N.~A. Chriss, N.~Chriss, Black Scholes and beyond: option pricing models,
+  McGraw-Hill, 1997.
+
+\bibitem{schrittwieser2020mastering}
+J.~Schrittwieser, I.~Antonoglou, T.~Hubert, K.~Simonyan, L.~Sifre, S.~Schmitt,
+  A.~Guez, E.~Lockhart, D.~Hassabis, T.~Graepel, et~al., Mastering atari, go,
+  chess and shogi by planning with a learned model, Nature 588~(7839) (2020)
+  604--609.
+
+\bibitem{mohamed2020monte}
+S.~Mohamed, M.~Rosca, M.~Figurnov, A.~Mnih, Monte carlo gradient estimation in
+  machine learning, Journal of Machine Learning Research 21~(132) (2020) 1--62.
+
+\bibitem{bowman2015generating}
+S.~R. Bowman, L.~Vilnis, O.~Vinyals, A.~M. Dai, R.~Jozefowicz, S.~Bengio,
+  Generating sentences from a continuous space, arXiv preprint arXiv:1511.06349
+  (2015).
+
+\bibitem{kingma2016improving}
+D.~P. Kingma, T.~Salimans, R.~Jozefowicz, X.~Chen, I.~Sutskever, M.~Welling,
+  Improving variational inference with inverse autoregressive flow, arXiv
+  preprint arXiv:1606.04934 (2016).
+
+\bibitem{higgins2016beta}
+I.~Higgins, L.~Matthey, A.~Pal, C.~Burgess, X.~Glorot, M.~Botvinick,
+  S.~Mohamed, A.~Lerchner, beta-vae: Learning basic visual concepts with a
+  constrained variational framework (2016).
+
+\bibitem{burgess2018understanding}
+C.~P. Burgess, I.~Higgins, A.~Pal, L.~Matthey, N.~Watters, G.~Desjardins,
+  A.~Lerchner, Understanding disentangling in $\beta$-vae, arXiv preprint
+  arXiv:1804.03599 (2018).
+
+\bibitem{dieng2016variational}
+A.~B. Dieng, D.~Tran, R.~Ranganath, J.~Paisley, D.~M. Blei, Variational
+  inference via $\chi$-upper bound minimization, arXiv preprint
+  arXiv:1611.00328 (2016).
+
+\bibitem{gregor2015draw}
+K.~Gregor, I.~Danihelka, A.~Graves, D.~Rezende, D.~Wierstra, Draw: A recurrent
+  neural network for image generation, in: International Conference on Machine
+  Learning, PMLR, 2015, pp. 1462--1471.
+
+\bibitem{semeniuta2017hybrid}
+S.~Semeniuta, A.~Severyn, E.~Barth, A hybrid convolutional variational
+  autoencoder for text generation, arXiv preprint arXiv:1702.02390 (2017).
+
+\bibitem{jin2018junction}
+W.~Jin, R.~Barzilay, T.~Jaakkola, Junction tree variational autoencoder for
+  molecular graph generation, in: International Conference on Machine Learning,
+  PMLR, 2018, pp. 2323--2332.
+
+\bibitem{habibian2019video}
+A.~Habibian, T.~v. Rozendaal, J.~M. Tomczak, T.~S. Cohen, Video compression
+  with rate-distortion autoencoders, in: Proceedings of the IEEE/CVF
+  International Conference on Computer Vision, 2019, pp. 7033--7042.
+
+\bibitem{maaloe2019biva}
+L.~Maal{\o}e, M.~Fraccaro, V.~Li{\'e}vin, O.~Winther, Biva: A very deep
+  hierarchy of latent variables for generative modeling, arXiv preprint
+  arXiv:1902.02102 (2019).
+
+\bibitem{vahdat2020nvae}
+A.~Vahdat, J.~Kautz, Nvae: A deep hierarchical variational autoencoder, arXiv
+  preprint arXiv:2007.03898 (2020).
+
+\bibitem{child2020very}
+R.~Child, Very deep vaes generalize autoregressive models and can outperform
+  them on images, arXiv preprint arXiv:2011.10650 (2020).
+
+\bibitem{maddison2016discrelax}
+C.~J. Maddison, A.~Mnih, Y.~W. Teh, The concrete distribution: {A} continuous
+  relaxation of discrete random variables, CoRR abs/1611.00712 (2016).
+\newblock \href {http://arxiv.org/abs/1611.00712} {\path{arXiv:1611.00712}}.
+
+\bibitem{rolfe2016discrete}
+J.~T. Rolfe, Discrete variational autoencoders, arXiv preprint arXiv:1609.02200
+  (2016).
+
+\bibitem{DBLP:journals/corr/abs-1711-00937}
+A.~van~den Oord, O.~Vinyals, K.~Kavukcuoglu, Neural discrete representation
+  learning, CoRR abs/1711.00937 (2017).
+\newblock \href {http://arxiv.org/abs/1711.00937} {\path{arXiv:1711.00937}}.
+
+\bibitem{nalisnick2018deep}
+E.~Nalisnick, A.~Matsukawa, Y.~W. Teh, D.~Gorur, B.~Lakshminarayanan, Do deep
+  generative models know what they don't know?, arXiv preprint arXiv:1810.09136
+  (2018).
+
+\bibitem{he2019lagging}
+J.~He, D.~Spokoyny, G.~Neubig, T.~Berg-Kirkpatrick, Lagging inference networks
+  and posterior collapse in variational autoencoders, arXiv preprint
+  arXiv:1901.05534 (2019).
+
+\bibitem{rezende2018taming}
+D.~J. Rezende, F.~Viola, Taming vaes, arXiv preprint arXiv:1810.00597 (2018).
+
+\bibitem{richter2020vargrad}
+L.~Richter, A.~Boustati, N.~N{\"u}sken, F.~J. Ruiz, {\"O}.~D. Akyildiz,
+  Vargrad: A low-variance gradient estimator for variational inference, arXiv
+  preprint arXiv:2010.10436 (2020).
 
 \end{thebibliography}
