@@ -28,6 +28,8 @@
 \usepackage{pdfpages}
 \usepackage{booktabs} % Tables
 \usepackage{pifont}
+\usepackage{placeins}
+\usepackage{afterpage}
 
 %% Use the option review to obtain double line spacing
 %% \documentclass[preprint,review,12pt]{elsarticle}
@@ -345,7 +347,7 @@ The gradient of expression~\eqref{eq:varloss} can be computed using automatic di
 		\For{s = 1, \ldots, S}{
 		$\boldsymbol{z}^{(s)} \leftarrow \operatorname{sample}\left(q_{\boldsymbol{\phi}}(\cdot \mid \mathbf{x})\right)$ \\
 		$\boldsymbol{z}^{(s)} \leftarrow \operatorname{ stop\_gradient }\left(\boldsymbol{z}^{(s)}\right)$ \\
-		$f_{\boldsymbol{\phi}, \boldsymbol{\theta}}^{(s)} \leftarrow \log p_{\boldsymbol{\theta}}\left(\boldsymbol{x} | \boldsymbol{z}^{(s)}\right)p\left(\boldsymbol{z^{(s)}}\right) - \log q_{\phi}\left(z^{(s)}\right)$
+		$f_{\boldsymbol{\phi}, \boldsymbol{\theta}}^{(s)} \leftarrow \log p_{\boldsymbol{\theta}}(\boldsymbol{x} | \boldsymbol{z}^{(s)})p(\boldsymbol{z^{(s)}}) - \log q_{\boldsymbol{\phi}}(\mathbf{z}^{(s)} | \mathbf{x})$
 	}
 	$\widehat{\mathcal{L}} \leftarrow \text { Variance }\left(\left\{f_{\boldsymbol{\phi}, \boldsymbol{\theta}}^{(s)}\right\}_{s=1}^{S}\right)$ \\
 	
@@ -394,17 +396,33 @@ The prior $p(\mathbf{z})$ will be a unit isotropic Gaussian in either case $p(\m
 \label{subsec:discrete}
 
 
+
+
 \section{Experiments}
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{../plots/fmnist_learning}
+	\caption{}
+	\label{fig:fmnistlearning}
+\end{figure}
+
+
+
+
 \label{sec:results}
 \subsection{Continuous latent space}
+	\begin{figure*}
+	\subfloat[Vanilla VAE]{\includegraphics[width = 0.32\linewidth]{../plots/V_VAE/fmnist/manifold.png}}
+	\quad
+	\subfloat[Score function gradient]{\includegraphics[width = 0.32\linewidth]{../plots/RC_VAE/fmnist/manifold.png}}
+	\quad
+	\subfloat[Variance gradient]{\includegraphics[width = 0.32\linewidth]{../plots/VC_VAE/fmnist/manifold.png}} 
+	\caption{Manifolds learned using the variance loss function. }
+	\label{fig:manifolds}
+\end{figure*}
+\afterpage{\FloatBarrier}
+
 We compare the performance of the latent variable model described in section~\ref{subsec:continuous} and compare the efficiency of different gradient estimators/objectives.
-
-\subsubsection{Fashion MNIST}
-\subsubsection{CELEBa}
-
-\subsection{Discrete latent space}
-\subsubsection{Binarized MNIST}
-\subsubsection{Binarized Omniglot}
 
 \section{Conclusion}
 
